@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25C260902598386200468220 /* sidemenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 25C2608F2598386200468220 /* sidemenu.png */; };
+		25C260952598390F00468220 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C260942598390F00468220 /* SWRevealViewController.m */; };
+		25C260982598396A00468220 /* FrontViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C260972598396A00468220 /* FrontViewController.swift */; };
 		25E55C67259454A100B4406D /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E55C66259454A100B4406D /* WeatherManager.swift */; };
 		25E55C6A25946F3F00B4406D /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E55C6925946F3F00B4406D /* WeatherData.swift */; };
 		25E55C6D25947E7700B4406D /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E55C6C25947E7700B4406D /* WeatherModel.swift */; };
@@ -22,6 +25,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		25C2608F2598386200468220 /* sidemenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sidemenu.png; sourceTree = "<group>"; };
+		25C260922598390E00468220 /* Clima-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Clima-Bridging-Header.h"; sourceTree = "<group>"; };
+		25C260932598390F00468220 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		25C260942598390F00468220 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		25C260972598396A00468220 /* FrontViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontViewController.swift; sourceTree = "<group>"; };
 		25E55C66259454A100B4406D /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		25E55C6925946F3F00B4406D /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		25E55C6C25947E7700B4406D /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
@@ -88,6 +96,7 @@
 				ADAA27BB231BBFB300365194 /* LaunchScreen.storyboard */,
 				ADAA27BE231BBFB300365194 /* Info.plist */,
 				ADAA27C5231BC02B00365194 /* dark_background.pdf */,
+				25C2608F2598386200468220 /* sidemenu.png */,
 				ADAA27C4231BC02B00365194 /* light_background.pdf */,
 			);
 			path = Clima;
@@ -96,7 +105,11 @@
 		ADAA27C8231BC3E500365194 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				25C260932598390F00468220 /* SWRevealViewController.h */,
+				25C260942598390F00468220 /* SWRevealViewController.m */,
 				ADAA27B4231BBFAF00365194 /* WeatherViewController.swift */,
+				25C260922598390E00468220 /* Clima-Bridging-Header.h */,
+				25C260972598396A00468220 /* FrontViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -141,6 +154,7 @@
 				TargetAttributes = {
 					ADAA27AC231BBFAF00365194 = {
 						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1230;
 					};
 				};
 			};
@@ -173,6 +187,7 @@
 				ADAA27BA231BBFB300365194 /* Assets.xcassets in Resources */,
 				ADAA27B8231BBFAF00365194 /* Main.storyboard in Resources */,
 				ADAA27C6231BC02C00365194 /* light_background.pdf in Resources */,
+				25C260902598386200468220 /* sidemenu.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,9 +198,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25C260952598390F00468220 /* SWRevealViewController.m in Sources */,
 				ADAA27B5231BBFAF00365194 /* WeatherViewController.swift in Sources */,
 				25E55C6A25946F3F00B4406D /* WeatherData.swift in Sources */,
 				ADAA27B1231BBFAF00365194 /* AppDelegate.swift in Sources */,
+				25C260982598396A00468220 /* FrontViewController.swift in Sources */,
 				25E55C67259454A100B4406D /* WeatherManager.swift in Sources */,
 				25E55C6D25947E7700B4406D /* WeatherModel.swift in Sources */,
 				ADAA27B3231BBFAF00365194 /* SceneDelegate.swift in Sources */,
@@ -332,6 +349,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5WAUHBZJ8Z;
 				INFOPLIST_FILE = Clima/Info.plist;
@@ -341,6 +359,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = WooSung;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Clima/Controller/Clima-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -350,6 +370,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5WAUHBZJ8Z;
 				INFOPLIST_FILE = Clima/Info.plist;
@@ -359,6 +380,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = WooSung;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Clima/Controller/Clima-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
