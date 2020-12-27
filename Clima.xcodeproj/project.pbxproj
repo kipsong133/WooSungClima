@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2542DCC1259868F6007F6951 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2542DCC0259868F6007F6951 /* test.swift */; };
 		25541E2825985AE1008F84EE /* GenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25541E2725985AE1008F84EE /* GenderModel.swift */; };
 		25541E2B25985F1B008F84EE /* GenderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25541E2A25985F1B008F84EE /* GenderManager.swift */; };
 		25C260902598386200468220 /* sidemenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 25C2608F2598386200468220 /* sidemenu.png */; };
@@ -25,10 +26,10 @@
 		ADAA27BD231BBFB300365194 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADAA27BB231BBFB300365194 /* LaunchScreen.storyboard */; };
 		ADAA27C6231BC02C00365194 /* light_background.pdf in Resources */ = {isa = PBXBuildFile; fileRef = ADAA27C4231BC02B00365194 /* light_background.pdf */; };
 		ADAA27C7231BC02C00365194 /* dark_background.pdf in Resources */ = {isa = PBXBuildFile; fileRef = ADAA27C5231BC02B00365194 /* dark_background.pdf */; };
-		ADAA27CE231BC87F00365194 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = ADAA27CD231BC87F00365194 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2542DCC0259868F6007F6951 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		25541E2725985AE1008F84EE /* GenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderModel.swift; sourceTree = "<group>"; };
 		25541E2A25985F1B008F84EE /* GenderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderManager.swift; sourceTree = "<group>"; };
 		25C2608F2598386200468220 /* sidemenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sidemenu.png; sourceTree = "<group>"; };
@@ -51,7 +52,6 @@
 		ADAA27BE231BBFB300365194 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADAA27C4231BC02B00365194 /* light_background.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = light_background.pdf; sourceTree = "<group>"; };
 		ADAA27C5231BC02B00365194 /* dark_background.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = dark_background.pdf; sourceTree = "<group>"; };
-		ADAA27CD231BC87F00365194 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E829B19F41FFC635B4901533 /* Pods_Clima.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Clima.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00B128DE7D2BA4E774ED1A6 /* Pods-Clima.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clima.release.xcconfig"; path = "Target Support Files/Pods-Clima/Pods-Clima.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,6 +76,7 @@
 				25E55C6C25947E7700B4406D /* WeatherModel.swift */,
 				25541E2725985AE1008F84EE /* GenderModel.swift */,
 				25541E2A25985F1B008F84EE /* GenderManager.swift */,
+				2542DCC0259868F6007F6951 /* test.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -100,7 +101,6 @@
 		ADAA27A4231BBFAF00365194 = {
 			isa = PBXGroup;
 			children = (
-				ADAA27CD231BC87F00365194 /* README.md */,
 				ADAA27AF231BBFAF00365194 /* Clima */,
 				ADAA27AE231BBFAF00365194 /* Products */,
 				42CBE8818D740C033AC8A3D8 /* Pods */,
@@ -216,7 +216,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADAA27CE231BC87F00365194 /* README.md in Resources */,
 				ADAA27C7231BC02C00365194 /* dark_background.pdf in Resources */,
 				ADAA27BD231BBFB300365194 /* LaunchScreen.storyboard in Resources */,
 				ADAA27BA231BBFB300365194 /* Assets.xcassets in Resources */,
@@ -276,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25541E2825985AE1008F84EE /* GenderModel.swift in Sources */,
+				2542DCC1259868F6007F6951 /* test.swift in Sources */,
 				25D2786325983F6B001A2245 /* LoginViewController.swift in Sources */,
 				25C260952598390F00468220 /* SWRevealViewController.m in Sources */,
 				ADAA27B5231BBFAF00365194 /* WeatherViewController.swift in Sources */,
