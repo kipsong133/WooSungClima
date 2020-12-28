@@ -16,4 +16,5 @@ struct Variables {
     static var userName: String?
     static var userProfileImage: UIImage?
     static var userGender: String?
+    static var loginStatusIndex: Int = 0
 }

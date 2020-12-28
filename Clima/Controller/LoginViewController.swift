@@ -18,26 +18,49 @@ class LoginViewController: UIViewController {
     // 카카오/네이버 Outlet Variables
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var genderLabel: UILabel!
     
+    @IBOutlet weak var backgroundView: UIView!
+    let separatorView = UIView()
+
+    let myImage = UIImage(systemName: "trash") //이미지 객체 생성
+
     
     // 네이버 로그인 구현 관련 인스턴스 생성
     let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
     
     @IBAction func login(_ sender: Any) {
-        
+        Variables.loginStatusIndex = 1
         loginInstance?.requestThirdPartyLogin()
     }
     
     @IBAction func logout(_ sender: Any) {
+        Variables.loginStatusIndex = 0
         loginInstance?.requestDeleteToken()
         self.profileImageView.image = UIImage(named: "default.png")
+        Variables.userName = ""
+        Variables.userGender = ""
     }
     
+    
+    
     override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // 프로필 원형으로 잡기
+        profileImageView.layer.cornerRadius = profileImageView.frame.width / 2 //프레임을 원으로 만들기
+        profileImageView.contentMode = UIView.ContentMode.scaleAspectFill //이미지 비율 바로잡기
+        profileImageView.clipsToBounds = true //이미지를 뷰 프레임에 맞게 clip하기
+        
+        // 배경 그림자효과
+        backgroundView.layer.shadowColor = UIColor.black.cgColor
+        backgroundView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        backgroundView.layer.shadowRadius = 3
+        backgroundView.layer.shadowOpacity = 0.8
+        
+        
         // 기본값을 넣었는데 왜안되는지?? 의문,,,
         self.profileImageView.image = UIImage(named: "default.png")
-        super.viewDidLoad()
+        
         self.loginInstance?.delegate = self
         
         self.infoLabel.text = Variables.userName
@@ -56,6 +79,7 @@ extension LoginViewController {
     
     //앱으로 로그인
     @IBAction func onKakaoLoginByAppTouched(_ sender: Any) {
+        Variables.loginStatusIndex = 1
         // 카카오톡 설치 여부 확인
         if (AuthApi.isKakaoTalkLoginAvailable()) {
             AuthApi.shared.loginWithKakaoTalk {(oauthToken, error) in
@@ -81,6 +105,7 @@ extension LoginViewController {
     
     //폰(시뮬레이터)에 앱이 안깔려 있을때 웹 브라우저를 통해 로그인
     @IBAction func onKakaoLoginByWebTouched(_ sender: Any) {
+        Variables.loginStatusIndex = 1
         AuthApi.shared.loginWithKakaoAccount {(oauthToken, error) in
             if let error = error {
                 print(error)
@@ -111,9 +136,7 @@ extension LoginViewController {
                 self.infoLabel.text = user?.kakaoAccount?.profile?.nickname
                 Variables.userName = user?.kakaoAccount?.profile?.nickname
                 
-                
-                Variables.userGender = (user?.kakaoAccount?.gender?.rawValue)
-                print(Variables.userGender!)
+                Variables.userGender = (user?.kakaoAccount?.gender?.rawValue) 
                 
                 if let url = user?.kakaoAccount?.profile?.profileImageUrl,
                     let data = try? Data(contentsOf: url) {
@@ -180,6 +203,9 @@ extension LoginViewController: NaverThirdPartyLoginConnectionDelegate {
         guard let email = object["email"] as? String else { return }
         guard let id = object["id"] as? String else {return}
         guard let profileImage = object["profile_image"] as? String else {return}
+        guard let gender = object["gender"] as? String else {return}
+        
+        Variables.userGender = gender
         
         //let profileImageURL = URL(string: profileImage)
         

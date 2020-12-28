@@ -45,12 +45,17 @@ class WeatherViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
-        if let gender = Variables.userGender {
-            if gender == "male" {
-            self.userCharacter?.image = UIImage(named: "아침.PNG")
-            } else {
-                
+        if Variables.loginStatusIndex == 1 {
+            if let gender = Variables.userGender {
+                if gender == "male" || gender == "M" {
+                    self.userCharacter?.image = UIImage(named: "아침.PNG")
+                } else {
+                    
+                }
             }
+        } else {
+            self.userCharacter?.image = nil
+
         }
         print(#function)
     }
