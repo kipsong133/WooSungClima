@@ -12,7 +12,9 @@ import CoreLocation
 class WeatherViewController: UIViewController {
 
     @IBOutlet weak var sideBarButton: UIBarButtonItem!
-
+//    @IBOutlet weak var personImage: UIImageView!
+    @IBOutlet weak var userCharacter: UIImageView!
+    
     
     @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
@@ -24,11 +26,11 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        weatherManager.delegate = self
+        searchTextField.delegate = self
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
-        
         // 메인 컨트롤러의 참조 정보를 가져온다.
         if let revealVC = self.revealViewController() {
             // 버튼이 클릭될 때 메인 컨트롤러에 정의된 revealToggle(_:)을 호출하도록 정의한다.
@@ -37,18 +39,47 @@ class WeatherViewController: UIViewController {
             // 제스쳐를 뷰에 추가한다.
             self.view.addGestureRecognizer(revealVC.panGestureRecognizer())
         }
-        
-        
-        weatherManager.delegate = self
-        searchTextField.delegate = self
     }
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        if let gender = Variables.userGender {
+            if gender == "male" {
+            self.userCharacter?.image = UIImage(named: "아침.PNG")
+            } else {
+                
+            }
+        }
+        print(#function)
+    }
+    
+    
+    
+    
     
     @IBAction func locationPressed(_ sender: UIButton) {
         locationManager.requestLocation()
         
     }
-    
+ 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //MARK: - UITextFieldDelegate
@@ -88,7 +119,7 @@ extension WeatherViewController: UITextFieldDelegate {
     }
     
     
-    
+     
 }
 
 //MARK: - WeatherManagerDelegate
@@ -99,6 +130,7 @@ extension WeatherViewController: WeatherManagerDelegate {
             self.temperatureLabel.text = weather.temperatureString
             self.conditionImageView.image = UIImage(systemName: weather.conditionName)
             self.cityLabel.text = weather.cityName
+            
         }        
     }
     

@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  SideBarViewController.swift
 //  Clima
 //
 //  Created by 김우성 on 2020/12/27.
@@ -12,75 +12,31 @@ import KakaoSDKUser
 import Foundation
 import NaverThirdPartyLogin
 import Alamofire
-import WebKit
 
-class LoginViewController: UIViewController {
-    // 카카오/네이버 Outlet Variables
-    @IBOutlet weak var infoLabel: UILabel!
-    @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var genderLabel: UILabel!
+class SideBarViewController: UITableViewController {
     
+    
+    
+
+    
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
     
     // 네이버 로그인 구현 관련 인스턴스 생성
     let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
+
     
-    @IBAction func login(_ sender: Any) {
-        
-        loginInstance?.requestThirdPartyLogin()
-    }
-    
-    @IBAction func logout(_ sender: Any) {
-        loginInstance?.requestDeleteToken()
-        self.profileImageView.image = UIImage(named: "default.png")
-    }
-    
-    override func viewDidLoad() {
-        // 기본값을 넣었는데 왜안되는지?? 의문,,,
-        self.profileImageView.image = UIImage(named: "default.png")
+    override func awakeFromNib() {
         super.viewDidLoad()
         self.loginInstance?.delegate = self
         
-        self.infoLabel.text = Variables.userName
-        self.profileImageView.image = Variables.userProfileImage
-        
-
     }
     
     
     
- 
-}
-
-//MARK: - Kakao login logic
-extension LoginViewController {
     
-    //앱으로 로그인
-    @IBAction func onKakaoLoginByAppTouched(_ sender: Any) {
-        // 카카오톡 설치 여부 확인
-        if (AuthApi.isKakaoTalkLoginAvailable()) {
-            AuthApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-                if let error = error {
-                    // 예외 처리 (로그인 취소 등)
-                    print(error)
-                }
-                else {
-                    print("loginWithKakaoTalk() success.")
-                    // do something
-                    _ = oauthToken
-                    // 어세스토큰
-                    let accessToken = oauthToken?.accessToken
-                    
-                    //카카오 로그인을 통해 사용자 토큰을 발급 받은 후 사용자 관리 API 호출
-                    self.setUserInfo()
-                }
-            }
-        }
-        
-    }
-    
-    
-    //폰(시뮬레이터)에 앱이 안깔려 있을때 웹 브라우저를 통해 로그인
-    @IBAction func onKakaoLoginByWebTouched(_ sender: Any) {
+    @IBAction func kakaoLogin(_ sender: Any) {
         AuthApi.shared.loginWithKakaoAccount {(oauthToken, error) in
             if let error = error {
                 print(error)
@@ -95,11 +51,17 @@ extension LoginViewController {
                 
                 //카카오 로그인을 통해 사용자 토큰을 발급 받은 후 사용자 관리 API 호출
                 self.setUserInfo()
+
+                
             }
         }
     }
-    
     func setUserInfo() {
+        
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "WeatherViewController") as? WeatherViewController else {
+            print("VC Instant error")
+            return
+        }
         UserApi.shared.me() {(user, error) in
             if let error = error {
                 print(error)
@@ -108,29 +70,45 @@ extension LoginViewController {
                 print("me() success.")
                 //do something
                 _ = user
-                self.infoLabel.text = user?.kakaoAccount?.profile?.nickname
-                Variables.userName = user?.kakaoAccount?.profile?.nickname
+                self.nameLabel.text = user?.kakaoAccount?.profile?.nickname
                 
+                // 이메일 가져오는거 다시 승인요청했으니 시간 지난후 안되면, 키 재발급할 것.
+                // 2020.12.27 17:42
+                //print(user?.kakaoAccount?.email)
+//                if let email = user?.kakaoAccount?.email {
+//                    self.emailLabel.text = email
+//                    print(email)
+//                }
+
                 
-                Variables.userGender = (user?.kakaoAccount?.gender?.rawValue)
-                print(Variables.userGender!)
+//                Variables.gender = user?.kakaoAccount?.gender?.rawValue 
+//                
+//                if Variables.gender != nil {
+//                    vc.userCharacter?.image = UIImage(named: "밤")
+//                    print("male")
+//                } else {
+//                    print("female")
+//                }
+                
+
                 
                 if let url = user?.kakaoAccount?.profile?.profileImageUrl,
-                    let data = try? Data(contentsOf: url) {
-                    self.profileImageView.image = UIImage(data: data)
-                    Variables.userProfileImage = UIImage(data: data)
+                   let data = try? Data(contentsOf: url) {
+                    self.profileImage.image = UIImage(data: data)
                 }
             }
         }
     }
     
+    @IBAction func naverLogin(_ sender: Any) {
+        loginInstance?.requestThirdPartyLogin()
+    }
+    
+    
     
 }
 
-
-//MARK: - Naver login logic
-extension LoginViewController: NaverThirdPartyLoginConnectionDelegate {
-
+extension SideBarViewController: NaverThirdPartyLoginConnectionDelegate {
     // 로그인에 성공한 경우 호출
     func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
         print("Success login")
@@ -145,15 +123,12 @@ extension LoginViewController: NaverThirdPartyLoginConnectionDelegate {
     // 로그아웃
     func oauth20ConnectionDidFinishDeleteToken() {
         print("log out")
-        self.profileImageView.image = UIImage(named: "default.png")
     }
     
     // 모든 error
     func oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFailWithError error: Error!) {
         print("error = \(error.localizedDescription)")
     }
-    
-
     
     // RESTful API, id가져오기
     func getInfo() {
@@ -188,13 +163,12 @@ extension LoginViewController: NaverThirdPartyLoginConnectionDelegate {
         
         if let profileImageURL = URL(string: profileImage),
             let data = try? Data(contentsOf: profileImageURL) {
-            self.profileImageView.image = UIImage(data: data)
-            Variables.userProfileImage = UIImage(data: data)
+            self.profileImage.image = UIImage(data: data)
         }
-        Variables.userName = "\(name)"
-        self.infoLabel.text = "\(name)"
-        //self.emailLabel.text = "\(email)"
-        //self.id.text = "\(id)"
+    
+        self.nameLabel.text = "\(name)"
+        self.emailLabel.text = "\(email)"
+//        self.id.text = "\(id)"
       }
     }
     
