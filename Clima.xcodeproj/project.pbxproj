@@ -16,9 +16,11 @@
 		2542DCCE25987323007F6951 /* 카카오로그인.png in Resources */ = {isa = PBXBuildFile; fileRef = 2542DCCD25987323007F6951 /* 카카오로그인.png */; };
 		2542DCD125987357007F6951 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2542DCD025987357007F6951 /* default.png */; };
 		2542DCD5259874A5007F6951 /* 네이버로그인.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 2542DCD4259874A5007F6951 /* 네이버로그인.PNG */; };
+		25966BC12599DD4200262E37 /* 로그아웃.png in Resources */ = {isa = PBXBuildFile; fileRef = 25966BC02599DD4200262E37 /* 로그아웃.png */; };
 		25C260902598386200468220 /* sidemenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 25C2608F2598386200468220 /* sidemenu.png */; };
 		25C260952598390F00468220 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C260942598390F00468220 /* SWRevealViewController.m */; };
 		25C260982598396A00468220 /* FrontViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C260972598396A00468220 /* FrontViewController.swift */; };
+		25D168DA259AFF7700F48930 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 25D168D9259AFF7700F48930 /* background.png */; };
 		25D2786325983F6B001A2245 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D2786225983F6B001A2245 /* LoginViewController.swift */; };
 		25E55C67259454A100B4406D /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E55C66259454A100B4406D /* WeatherManager.swift */; };
 		25E55C6A25946F3F00B4406D /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E55C6925946F3F00B4406D /* WeatherData.swift */; };
@@ -44,11 +46,13 @@
 		2542DCCD25987323007F6951 /* 카카오로그인.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "카카오로그인.png"; sourceTree = "<group>"; };
 		2542DCD025987357007F6951 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
 		2542DCD4259874A5007F6951 /* 네이버로그인.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "네이버로그인.PNG"; sourceTree = "<group>"; };
+		25966BC02599DD4200262E37 /* 로그아웃.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "로그아웃.png"; sourceTree = "<group>"; };
 		25C2608F2598386200468220 /* sidemenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sidemenu.png; sourceTree = "<group>"; };
 		25C260922598390E00468220 /* Clima-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Clima-Bridging-Header.h"; sourceTree = "<group>"; };
 		25C260932598390F00468220 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		25C260942598390F00468220 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		25C260972598396A00468220 /* FrontViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontViewController.swift; sourceTree = "<group>"; };
+		25D168D9259AFF7700F48930 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		25D2786225983F6B001A2245 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		25E55C66259454A100B4406D /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		25E55C6925946F3F00B4406D /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
@@ -137,12 +141,14 @@
 				ADAA27B9231BBFB300365194 /* Assets.xcassets */,
 				ADAA27BB231BBFB300365194 /* LaunchScreen.storyboard */,
 				ADAA27BE231BBFB300365194 /* Info.plist */,
+				25D168D9259AFF7700F48930 /* background.png */,
 				2542DCD025987357007F6951 /* default.png */,
 				2542DCD4259874A5007F6951 /* 네이버로그인.PNG */,
 				2542DCCD25987323007F6951 /* 카카오로그인.png */,
 				2542DCC325986CA0007F6951 /* 밤.PNG */,
 				2542DCC425986CA0007F6951 /* 아침.PNG */,
 				2542DCC525986CA0007F6951 /* 점심.PNG */,
+				25966BC02599DD4200262E37 /* 로그아웃.png */,
 				ADAA27C5231BC02B00365194 /* dark_background.pdf */,
 				25C2608F2598386200468220 /* sidemenu.png */,
 				ADAA27C4231BC02B00365194 /* light_background.pdf */,
@@ -239,9 +245,11 @@
 				ADAA27BD231BBFB300365194 /* LaunchScreen.storyboard in Resources */,
 				2542DCD125987357007F6951 /* default.png in Resources */,
 				2542DCC725986CA0007F6951 /* 아침.PNG in Resources */,
+				25966BC12599DD4200262E37 /* 로그아웃.png in Resources */,
 				ADAA27BA231BBFB300365194 /* Assets.xcassets in Resources */,
 				2542DCD5259874A5007F6951 /* 네이버로그인.PNG in Resources */,
 				ADAA27B8231BBFAF00365194 /* Main.storyboard in Resources */,
+				25D168DA259AFF7700F48930 /* background.png in Resources */,
 				2542DCC825986CA0007F6951 /* 점심.PNG in Resources */,
 				2542DCC625986CA0007F6951 /* 밤.PNG in Resources */,
 				ADAA27C6231BC02C00365194 /* light_background.pdf in Resources */,

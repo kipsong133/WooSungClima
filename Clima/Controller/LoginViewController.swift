@@ -20,9 +20,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var profileImageView: UIImageView!
     
     @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var backgroundView2: UIView!
     let separatorView = UIView()
 
-    let myImage = UIImage(systemName: "trash") //이미지 객체 생성
 
     
     // 네이버 로그인 구현 관련 인스턴스 생성
@@ -35,17 +35,42 @@ class LoginViewController: UIViewController {
     
     @IBAction func logout(_ sender: Any) {
         Variables.loginStatusIndex = 0
+        self.infoLabel.text = ""
         loginInstance?.requestDeleteToken()
         self.profileImageView.image = UIImage(named: "default.png")
         Variables.userName = ""
         Variables.userGender = ""
     }
     
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        addShadow()
+        // 기본값을 넣었는데 왜안되는지?? 의문,,,
+        self.profileImageView.image = UIImage(named: "default.png")
+        
+        self.loginInstance?.delegate = self
+        
+        self.infoLabel.text = Variables.userName
+        self.profileImageView.image = Variables.userProfileImage
+    }
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        if Variables.loginStatusIndex == 0 {
+            self.profileImageView.image = UIImage(named: "default.png")
+        }
+    }
+    
+ 
+    
+    
+    
+    
+    func addShadow() {
         // 프로필 원형으로 잡기
         profileImageView.layer.cornerRadius = profileImageView.frame.width / 2 //프레임을 원으로 만들기
         profileImageView.contentMode = UIView.ContentMode.scaleAspectFill //이미지 비율 바로잡기
@@ -57,22 +82,18 @@ class LoginViewController: UIViewController {
         backgroundView.layer.shadowRadius = 3
         backgroundView.layer.shadowOpacity = 0.8
         
-        
-        // 기본값을 넣었는데 왜안되는지?? 의문,,,
-        self.profileImageView.image = UIImage(named: "default.png")
-        
-        self.loginInstance?.delegate = self
-        
-        self.infoLabel.text = Variables.userName
-        self.profileImageView.image = Variables.userProfileImage
-        
-
+        backgroundView2.layer.shadowColor = UIColor.black.cgColor
+        backgroundView2.layer.shadowOffset = CGSize(width: 1, height: 1)
+        backgroundView2.layer.shadowRadius = 3
+        backgroundView2.layer.shadowOpacity = 0.8
     }
     
-    
-    
- 
 }
+
+
+
+
+
 
 //MARK: - Kakao login logic
 extension LoginViewController {
@@ -103,6 +124,8 @@ extension LoginViewController {
     }
     
     
+    
+    
     //폰(시뮬레이터)에 앱이 안깔려 있을때 웹 브라우저를 통해 로그인
     @IBAction func onKakaoLoginByWebTouched(_ sender: Any) {
         Variables.loginStatusIndex = 1
@@ -123,6 +146,8 @@ extension LoginViewController {
             }
         }
     }
+    
+    
     
     func setUserInfo() {
         UserApi.shared.me() {(user, error) in
@@ -149,6 +174,11 @@ extension LoginViewController {
     
     
 }
+
+
+
+
+
 
 
 //MARK: - Naver login logic

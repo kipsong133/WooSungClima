@@ -24,6 +24,9 @@ class WeatherViewController: UIViewController {
     var weatherManager = WeatherManager()
     var locationManager = CLLocationManager()
     
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         weatherManager.delegate = self

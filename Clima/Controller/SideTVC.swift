@@ -30,7 +30,7 @@ class SideTVC: UITableViewController {
             nameLabel.text = "\(Variables.userName!)님 좋은 하루 보내세요."
             statusLabel.text = "현재 로그인 중"
         } else {
-            self.profileImage.image = nil
+            self.profileImage.image = UIImage(named: "default.png")
             nameLabel.text = "로그인이 필요합니다."
             statusLabel.text = "현재 로그아웃 중"
         }
